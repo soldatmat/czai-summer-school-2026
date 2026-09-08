@@ -18,6 +18,14 @@ Active-learning-guided directed evolution: a protein language model embedding pl
 
 Pointing at the [soldatmat/CZAI_Summer_School-MLDE_landscapes](https://huggingface.co/datasets/soldatmat/CZAI_Summer_School-MLDE_landscapes) dataset mirror (cleaned fitness landscapes + precomputed ESM-2 embeddings).
 
+## 3. Protein Backbone Generation with RFdiffusion
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/soldatmat/czai-summer-school-2026/blob/main/CZAI_Summer_School-RFdiffusion.ipynb)
+
+**Needs a GPU runtime.** Diffusion-based protein backbone generation with **RFdiffusion**: unconditional generation of a novel backbone from noise, then motif scaffolding — fixing hen egg-white lysozyme's real catalytic residues (Glu35, Asp52, verified against PDB entry [1LYZ](https://www.rcsb.org/structure/1LYZ)) and designing a new scaffold around them — both with a 3D animation of the denoising trajectory. No training involved; this is inference-time conditioning only.
+
+Adapted from Sergey Ovchinnikov's [ColabDesign RFdiffusion notebook](https://github.com/sokrypton/ColabDesign/blob/main/rf/examples/diffusion.ipynb), pointing at the [soldatmat/CZAI_Summer_School-RFdiffusion_weights](https://huggingface.co/datasets/soldatmat/CZAI_Summer_School-RFdiffusion_weights) checkpoint mirror.
+
 ---
 
 Click a badge above, then **File → Save a copy in Drive** if you want to keep your results or changes.
@@ -30,4 +38,6 @@ Click a badge above, then **File → Save a copy in Drive** if you want to keep 
 
 GB1 — Wu, N.C. et al. *Adaptation in protein fitness landscapes is facilitated by indirect paths.* eLife 5, e16965 (2016).
 PhoQ — Podgornaia, A.I. & Laub, M.T. *Pervasive degeneracy and epistasis in a protein-protein interface.* Science 347(6222), 673-677 (2015).
-TrpB — Johnston, K.E. et al. *A combinatorially complete epistatic fitness landscape in an enzyme active site.* PNAS 121(32), e2400439121 (2024).</sub>
+TrpB — Johnston, K.E. et al. *A combinatorially complete epistatic fitness landscape in an enzyme active site.* PNAS 121(32), e2400439121 (2024).
+
+**RFdiffusion notebook** — Watson, J.L. et al. *De novo design of protein structure and function with RFdiffusion.* Nature 620, 1089–1100 (2023). Code & weights: [RosettaCommons/RFdiffusion](https://github.com/RosettaCommons/RFdiffusion) (BSD License). Notebook adapted from Sergey Ovchinnikov's [ColabDesign](https://github.com/sokrypton/ColabDesign) (`rf/examples/diffusion.ipynb`). Lysozyme structure — Diamond, R. *Real-space refinement of the structure of hen egg-white lysozyme.* J. Mol. Biol. 82, 371-391 (1974); PDB entry [1LYZ](https://www.rcsb.org/structure/1LYZ).</sub>
