@@ -1,0 +1,63 @@
+name: Mirror RFdiffusion weights to a GitHub Release
+
+# One-off / re-runnable helper: the official RFdiffusion checkpoints are only
+# hosted on files.ipd.uw.edu (a University of Washington file server), which
+# is unreliable / unreachable from some networks. This workflow fetches the
+# two checkpoints used by the CZAI_Summer_School-RFdiffusion.ipynb notebook
+# from that official source (GitHub-hosted runners have unrestricted internet
+# access) and republishes them as assets on a GitHub Release, so they can be
+# pulled from anywhere and then re-uploaded to the project's Hugging Face
+# weights mirror (soldatmat/CZAI_Summer_School-RFdiffusion_weights).
+#
+# The 32-hex-character strings in each URL are the official MD5 checksums
+# (per RosettaCommons/RFdiffusion's own download_models.sh) -- this workflow
+# verifies each download against them before publishing.
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Tag to attach the release assets to"
+        required: true
+        default: "rfdiffusion-weights-mirror-temp"
+
+permissions:
+  contents: write
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download official checkpoints and verify checksums
+        run: |
+          set -euo pipefail
+          declare -A CKPTS=(
+            ["Base_ckpt.pt"]="6f5902ac237024bdd0c176cb93063dc4"
+            ["ActiveSite_ckpt.pt"]="5532d2e1f3a4738decd58b19d633b3c3"
+          )
+          for name in "${!CKPTS[@]}"; do
+            hash="${CKPTS[$name]}"
+            url="http://files.ipd.uw.edu/pub/RFdiffusion/${hash}/${name}"
+            echo "Downloading ${name} from ${url}"
+            wget --tries=5 --waitretry=10 --timeout=60 -O "${name}" "${url}"
+            got=$(md5sum "${name}" | awk '{print $1}')
+            if [ "${got}" != "${hash}" ]; then
+              echo "MD5 MISMATCH for ${name}: expected ${hash}, got ${got}" >&2
+              exit 1
+            fi
+            echo "${name}: MD5 OK (${got})"
+            ls -la "${name}"
+          done
+
+      - name: Publish as a GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag="${{ github.event.inputs.release_tag }}"
+          gh release create "${tag}" \
+            --repo "${{ github.repository }}" \
+            --title "RFdiffusion weights mirror (temporary)" \
+            --notes "Temporary staging release: official RFdiffusion checkpoints (BSD-licensed, RosettaCommons/RFdiffusion), re-hosted here only long enough to be pulled down and re-uploaded to the soldatmat/CZAI_Summer_School-RFdiffusion_weights Hugging Face dataset. Safe to delete once that upload is done." \
+            --prerelease \
+            Base_ckpt.pt ActiveSite_ckpt.pt
