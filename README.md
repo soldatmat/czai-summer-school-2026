@@ -1,9 +1,33 @@
-# CZAI Summer School 2026 — Enzyme Function Prediction with CLEAN
+# CZAI Summer School 2026 — AI for Enzymes
+
+Hands-on notebooks for the CZAI Summer School lecture *"AI pro enzymy: Jak pochopit chemii přírody – a překonat ji"*.
+
+## 1. Enzyme Function Prediction with CLEAN
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/soldatmat/czai-summer-school-2026/blob/main/CZAI_Summer_School-CLEAN_training.ipynb)
 
-Hands-on notebook for the CZAI Summer School lecture *"AI pro enzymy: Jak pochopit chemii přírody – a překonat ji"*.
+Predicting an enzyme's EC number from its sequence with contrastive learning, in the style of **CLEAN**.
 
 Adapted from Ariane Mora's [AMLD workshop notebook](https://huggingface.co/datasets/arianemora/AMLD_workshop_ML4Enzymes), pointing at the [soldatmat/CZAI_Summer_School-CLEAN_training](https://huggingface.co/datasets/soldatmat/CZAI_Summer_School-CLEAN_training) dataset mirror.
 
-Click the badge above, then **File → Save a copy in Drive** before running any cells.
+## 2. Machine-Learning-guided Directed Evolution with BOES
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/soldatmat/czai-summer-school-2026/blob/main/CZAI_Summer_School-MLDE_BOES.ipynb)
+
+Active-learning-guided directed evolution: a protein language model embedding plus Bayesian Optimization (**BOES**) sequentially discovers high-fitness protein variants in a real combinatorial fitness landscape (GB1 by default, also PhoQ/TrpB), and is compared round-by-round against a random-selection baseline and a zero-shot PLM-ranking baseline.
+
+Pointing at the [soldatmat/CZAI_Summer_School-MLDE_landscapes](https://huggingface.co/datasets/soldatmat/CZAI_Summer_School-MLDE_landscapes) dataset mirror (cleaned fitness landscapes + precomputed ESM-2 embeddings).
+
+---
+
+Click a badge above, then **File → Save a copy in Drive** if you want to keep your results or changes.
+
+## Citations
+
+<sub>**CLEAN notebook** — Yu, T. et al. *Enzyme function prediction using contrastive learning.* Science 379(6639), 1358-1363 (2023).
+
+**BOES notebook** — Soldát, M. & Kléma, J. *Directed Evolution of Proteins via Bayesian Optimization in Embedding Space.* arXiv:2509.04998 (2025). Reference implementation: [soldatmat/PELLM](https://github.com/soldatmat/PELLM).
+
+GB1 — Wu, N.C. et al. *Adaptation in protein fitness landscapes is facilitated by indirect paths.* eLife 5, e16965 (2016).
+PhoQ — Podgornaia, A.I. & Laub, M.T. *Pervasive degeneracy and epistasis in a protein-protein interface.* Science 347(6222), 673-677 (2015).
+TrpB — Johnston, K.E. et al. *A combinatorially complete epistatic fitness landscape in an enzyme active site.* PNAS 121(32), e2400439121 (2024).</sub>
