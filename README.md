@@ -26,7 +26,7 @@ Click a badge above, then **File → Save a copy in Drive** if you want to keep 
 
 <sub>**CLEAN notebook** — Yu, T. et al. *Enzyme function prediction using contrastive learning.* Science 379(6639), 1358-1363 (2023).
 
-**BOES notebook** — Soldát, M. & Kléma, J. *Directed Evolution of Proteins via Bayesian Optimization in Embedding Space.* arXiv:2509.04998 (2025). Reference implementation: [soldatmat/PELLM](https://github.com/soldatmat/PELLM).
+**BOES notebook** — Soldát, M. & Kléma, J. *Directed Evolution of Proteins via Bayesian Optimization in Embedding Space.* 2024 IEEE International Conference on Bioinformatics and Biomedicine (BIBM), 91-98 (2024). Reference implementation: [soldatmat/PELLM](https://github.com/soldatmat/PELLM).
 
 GB1 — Wu, N.C. et al. *Adaptation in protein fitness landscapes is facilitated by indirect paths.* eLife 5, e16965 (2016).
 PhoQ — Podgornaia, A.I. & Laub, M.T. *Pervasive degeneracy and epistasis in a protein-protein interface.* Science 347(6222), 673-677 (2015).
