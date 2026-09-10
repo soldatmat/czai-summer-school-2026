@@ -30,6 +30,14 @@ Adapted from Sergey Ovchinnikov's [ColabDesign RFdiffusion notebook](https://git
 
 Click a badge above, then **File → Save a copy in Drive** if you want to keep your results or changes.
 
+## Fallback copies (with outputs)
+
+If live execution fails during the lecture, these already have all outputs saved — nothing needs to run.
+
+- [CLEAN](https://colab.research.google.com/github/soldatmat/czai-summer-school-2026/blob/main/with_outputs/CZAI_Summer_School-CLEAN_training.ipynb)
+- [MLDE/BOES](https://colab.research.google.com/github/soldatmat/czai-summer-school-2026/blob/main/with_outputs/CZAI_Summer_School-MLDE_BOES.ipynb)
+- [RFdiffusion](https://colab.research.google.com/github/soldatmat/czai-summer-school-2026/blob/main/with_outputs/CZAI_Summer_School-RFdiffusion.ipynb)
+
 ## Citations
 
 <sub>**CLEAN notebook** — Yu, T. et al. *Enzyme function prediction using contrastive learning.* Science 379(6639), 1358-1363 (2023).
